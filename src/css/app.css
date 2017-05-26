@@ -1,0 +1,215 @@
+/* Colors from Material UI palette: https://www.materialui.co/colors */
+
+/* Document structure */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.25rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Application structure */
+#RedditLite {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  height: 100%;
+  width: 100%;
+}
+
+#TitleBar {
+  background-color: #3F51B5;
+  color: #FFF;
+  flex: 0 1 auto;
+  padding: 0 1.5rem;
+}
+
+#Content {
+  flex: 1 0 auto;
+  padding: 0 1.5rem 1rem 1.5rem;
+}
+
+.panel-container {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+}
+
+.panel-left {
+  flex: 0 1 auto;
+  min-width: 200px;
+}
+
+.panel-right {
+  flex: 1 0 auto;
+}
+
+.nav-section {
+  flex: 1 0 auto;
+  height: 2.5rem;
+  line-height: 2.5rem;
+}
+
+/* General */
+h1 {
+  font-size: 2rem;
+}
+
+nav {
+  margin: .5rem 0;
+  display: flex;
+  flex-direction: row;
+  align-content: flex-center;
+}
+
+a,
+a:visited {
+  transition: color .25s linear;
+  color: #2196F3;
+}
+
+a:hover,
+a:active {
+  color: #03A9F4;
+}
+
+/* Helpers */
+.helper-text-right {
+  text-align: right;
+}
+
+/* Component: breadcrumbs */
+.breadcrumbs-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumbs-list li {
+  display: inline-block;
+}
+
+.breadcrumbs-list li::before {
+  content: " / ";
+  color: #CCC;
+}
+
+.breadcrumbs-list li:first-child::before {
+  content: "";
+}
+
+/* Component: Subreddits list */
+.subreddits-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.subreddits-list li {
+  height: 2rem;
+  line-height: 2rem;
+}
+
+.subreddits-list a {
+  text-decoration: none;
+  display: block;
+  transition: border .25s linear;
+  border-bottom: none;
+}
+
+.subreddits-list a:hover {
+  border-bottom: solid 1px #03A9F4;
+}
+
+.subreddits-list a.active {
+  border-bottom: solid 1px #2196F3;
+}
+
+.subreddits-list a.active:hover {
+
+}
+
+/* Componenet: Search form */
+.search-form input[type="text"] {
+  font-size: 1rem;
+  height: 2rem;
+  line-height: 2rem;
+  border: none;
+  border-bottom: solid 1px #9E9E9E;
+  transition: color .25s linear, border .25s linear;
+  outline: none;
+  margin-right: .5rem;
+}
+
+.search-form input[type="text"]:hover {
+  color: #03A9F4;
+  border-bottom: solid 1px #03A9F4;
+}
+
+.search-form input[type="text"]:focus,
+.search-form input[type="text"]:active {
+  color: #2196F3;
+  border-bottom: solid 1px #2196F3;
+}
+
+.search-form button {
+  color: #FFF;
+  font-size: 1rem;
+  height: 2rem;
+  width: 2rem;
+  line-height: 1.5rem;
+  background-color: #2196F3;
+  transition: background-color .25s linear;
+  border: none;
+  cursor: pointer;
+}
+
+.search-form button:disabled {
+  background-color: #9E9E9E;
+  cursor: not-allowed;
+  outline: none;
+}
+
+.search-form button:hover:enabled,{
+  background-color: #03A9F4;
+  outline: none;
+}
+
+.search-form button:active:enabled {
+  background-color: #42A5F5;
+  outline: none;
+}
+
+/* Component: Posts list */
+.posts-list {
+  margin: 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.posts-list li {
+  margin: .5rem;
+}
+
+
+.posts-list .post-meta {
+  font-size: .75rem;
+  color: #9E9E9E;
+}
+
+.posts-list .post-meta a,
+.posts-list .post-meta a:visited {
+  color: #42A5F5;
+}
+
+.posts-list .post-meta a:hover,
+.posts-list .post-meta a:active {
+  color: #64B5F6;
+}

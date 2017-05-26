@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reddit Lite</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="img/icons/favicon.ico" rel="shortcut icon">
+    <link href="css/app.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <main id="RedditLite">
+      <header id="TitleBar">
+        <h1><i class="fa fa-reddit-square"></i> Reddit Lite</h1>
+      </header>
+      <section id="Content">
+        <nav>
+          <div class="nav-section">
+            <ul class="breadcrumbs-list">
+              <li><a href="#">Home</a></li>
+              <li v-show="activeSub"><a :href="'#' + activeSub">{{activeSub}}</a></li>
+            </ul>
+          </div>
+          <div class="nav-section helper-text-right">
+            <form class="search-form">
+              <input name="Search" type="text" placeholder="Search Subreddits" v-model="searchTerm">
+              <button @click="searchSubReddits" @keyup.enter="searchSubReddits" :disabled="searching || searchTerm.length === 0">
+                <i class="fa fa-search" v-show="!searching"></i>
+                <i class="fa fa-refresh fa-spin" v-show="searching"></i>
+              </button>
+            </form>
+          </div>
+        </nav>
+
+        <div class="panel-container">
+          <div class="panel panel-left">
+            <h3>{{searchTitle}}</h3>
+            <ul class="subreddits-list">
+              <li v-for="sub in subreddits">
+                <a :href="'#' + sub.title" @click="getPosts(sub.title)">{{sub.title}}</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="panel panel-right">
+            <ul class="posts-list">
+              <li v-for="post in posts">
+                <a :href="domain + post.data.permalink" class="title-link" target="_blank">{{post.data.title}}</a>
+                <div class="post-meta">
+                  Submitted by <a :href="domain + '/user/' + post.data.author" class="author-link" target="_blank">{{post.data.author}}</a> at <span class="time-stamp">{{formatDate(post.data.created_utc)}}  {{post.data.created_utc}}</span>
+                  <a :href="post.data.url" class="comments-link" target="_blank">{{post.data.num_comments}} comments</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
