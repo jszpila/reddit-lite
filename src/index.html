@@ -14,49 +14,13 @@
   </head>
   <body>
     <main id="RedditLite">
-      <header id="TitleBar">
-        <h1><i class="fa fa-reddit-square"></i> Reddit Lite</h1>
-      </header>
+      <rl-app-header v-on:search-subs="getSubReddits" :busy="busy"></rl-app-header>
+
       <section id="Content">
-        <nav>
-          <div class="nav-section">
-            <ul class="breadcrumbs-list">
-              <li><a href="#">Home</a></li>
-              <li v-show="activeSub"><a :href="'#' + activeSub">{{activeSub}}</a></li>
-            </ul>
-          </div>
-          <div class="nav-section helper-text-right">
-            <form class="search-form">
-              <input name="Search" type="text" placeholder="Search Subreddits" v-model="searchTerm">
-              <button @click="searchSubReddits" @keyup.enter="searchSubReddits" :disabled="searching || searchTerm.length === 0">
-                <i class="fa fa-search" v-show="!searching"></i>
-                <i class="fa fa-refresh fa-spin" v-show="searching"></i>
-              </button>
-            </form>
-          </div>
-        </nav>
-
-        <div class="panel-container">
-          <div class="panel panel-left">
-            <h3>{{searchTitle}}</h3>
-            <ul class="subreddits-list">
-              <li v-for="sub in subreddits">
-                <a :href="'#' + sub.title" @click="getPosts(sub.title)">{{sub.title}}</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="panel panel-right">
-            <ul class="posts-list">
-              <li v-for="post in posts">
-                <a :href="domain + post.data.permalink" class="title-link" target="_blank">{{post.data.title}}</a>
-                <div class="post-meta">
-                  Submitted by <a :href="domain + '/user/' + post.data.author" class="author-link" target="_blank">{{post.data.author}}</a> at <span class="time-stamp">{{formatDate(post.data.created_utc)}}  {{post.data.created_utc}}</span>
-                  <a :href="post.data.url" class="comments-link" target="_blank">{{post.data.num_comments}} comments</a>
-                </div>
-              </li>
-            </ul>
-          </div>
+        <div class="flex-row-container">
+          <rl-subs-list v-on:select-sub="getPostsBySubName" :subs="subreddits" :title="searchTitle"></rl-subs-list>
+          <rl-posts-list :posts="posts" :name="activeSub" :domain="domain"></rl-posts-list>
+        </div>
       </section>
     </main>
 
