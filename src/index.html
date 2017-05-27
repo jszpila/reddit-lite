@@ -19,12 +19,17 @@
       <section id="Content">
         <div class="flex-row-container">
           <rl-subs-list v-on:select-sub="getPostsBySubName" :subs="subreddits" :title="searchTitle"></rl-subs-list>
-          <rl-posts-list :posts="posts" :name="activeSub" :domain="domain"></rl-posts-list>
+          <rl-posts-list v-on:refresh-posts="getPostsBySubName" :posts="posts" :name="activeSub" :domain="domain"></rl-posts-list>
         </div>
       </section>
     </main>
 
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="js/components/header.js"></script>
+    <script src="js/components/date.js"></script>
+    <script src="js/components/post.js"></script>
+    <script src="js/components/posts-list.js"></script>
+    <script src="js/components/subreddits-list.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>

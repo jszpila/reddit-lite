@@ -187,6 +187,11 @@ header h1 {
 }
 
 /* Component: Posts list */
+.panel-right h4 {
+  display: inline-block;
+  margin-right: 5px;
+}
+
 .posts-list {
   margin: 0;
   padding: 0;
@@ -197,7 +202,8 @@ header h1 {
   margin: .5rem 0;
 }
 
-.posts-list .post-meta {
+.posts-list .post-meta,
+.update-time {
   font-size: .75rem;
   color: #9E9E9E;
 }
