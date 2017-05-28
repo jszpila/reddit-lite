@@ -3,10 +3,8 @@
 // handle no results
 // handle fetch error
 // set active sub colors (make subreddits into own component)
-// set timer on posts!
 // check for hash on load
 // media queries
-// add loading spinners!
 
 var vm = new Vue({
   el: '#RedditLite',
@@ -24,20 +22,6 @@ var vm = new Vue({
     this.getSubReddits('popular');
   },
   methods: {
-    // Endpoints return objects with different structure; transmogrify them!
-    // @subredditData - array (of objects) - listing from Reddit endpoint
-    formatSubredditData: function(subredditData) {
-      var formatted = [],
-          tmp       = null;
-
-      for (var i = 0, x = subredditData.length; i < x; i++) {
-        tmp = subredditData[i].data;
-        formatted.push({'name': tmp.display_name ? tmp.display_name : tmp.subreddit, 'id': tmp.id});
-      }
-
-      return formatted;
-    },
-
     // Fetch subreddits
     // @term - string - search term
     getSubReddits: function(term) {
@@ -66,7 +50,8 @@ var vm = new Vue({
           self.error = data.error;
           console.error(data.error, data.message);
         } else {
-          self.subreddits = self.formatSubredditData(json.data.children);
+          console.log(json.data.children);
+          self.subreddits = json.data.children;
         }
       });
     },
