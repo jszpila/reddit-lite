@@ -6,14 +6,6 @@ Vue.component('rl-posts-list', {
       busy: true
     }
   },
-  created: function(e) {
-    this.startTimer();
-  },
-  computed: {
-    updated: function() {
-      return new Date().getTime()/1000|0;
-    }
-  },
   watch: {
     // Reset timer when sub is changed
     name: function(val) {
@@ -43,11 +35,15 @@ Vue.component('rl-posts-list', {
     refresh: function() {
       this.busy = true;
       this.$emit('refresh-posts', this.name);
+    },
+
+    getTimeStamp: function() {
+      return new Date().getTime()/1000|0;
     }
   },
   template: `<div class="panel panel-right">
               <h4 v-if="name">r/{{name}} <i v-if="busy" class="fa fa-spinner fa-pulse fa-fw"></i></h4>
-              <rl-date v-if="posts" :utc="updated" :txt="'Updated at'" :cssClass="'update-time'"></rl-date>
+              <rl-date v-if="posts" :utc="getTimeStamp()" :txt="'Updated at'" :cssClass="'update-time'"></rl-date>
               <ul class="posts-list">
                 <li v-for="post in posts">
                   <rl-post :post="post.data" :domain="domain"></rl-post>

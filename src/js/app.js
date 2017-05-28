@@ -50,7 +50,6 @@ var vm = new Vue({
           self.error = data.error;
           console.error(data.error, data.message);
         } else {
-          console.log(json.data.children);
           self.subreddits = json.data.children;
         }
       });
