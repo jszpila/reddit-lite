@@ -35,7 +35,7 @@ Vue.component('rl-subs-list', {
         url += 'subreddits/popular.json';
       } else {
         this.title = '"' + this.term + '" Subreddits';
-        url += 'search.json?q=' + encodeURIComponent(this.term);
+        url += 'search.json?type=sr&q=' + encodeURIComponent(this.term);
       }
 
       fetch(url).then(function(res) {
