@@ -67,8 +67,16 @@ a:active {
 }
 
 /* Helpers */
-.helper-text-right {
+.txt-right {
   text-align: right;
+}
+
+.txt-muted {
+  color: #9E9E9E;
+}
+
+.txt-smol {
+  font-size: .75rem;
 }
 
 /* Component: breadcrumbs */
@@ -212,12 +220,6 @@ header h1 {
   text-overflow: ellipsis;
   word-wrap: break-word;
   display: block;
-}
-
-.update-time,
-.post .meta {
-  font-size: .75rem;
-  color: #9E9E9E;
 }
 
 .post .meta a,

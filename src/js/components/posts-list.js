@@ -58,7 +58,7 @@ Vue.component('rl-posts-list', {
 
   template: `<div class="panel panel-right">
               <h4 v-if="activeSub">r/{{activeSub}} <i v-if="busy" class="fa fa-refresh fa-spin"></i></h4>
-              <rl-utc-date-time v-if="posts && activeSub" :utc="getTimeStamp()" :txt="'Updated at'" :cssClass="'update-time'"></rl-utc-date-time>
+              <rl-utc-date-time v-if="posts && activeSub" :utc="getTimeStamp()" :txt="'Updated at'" :cssClass="'update-time txt-muted txt-smol'"></rl-utc-date-time>
               <ul class="posts-list">
                 <li class="post" v-for="post in posts">
                   <rl-post :post="post.data" :domain="domain"></rl-post>
