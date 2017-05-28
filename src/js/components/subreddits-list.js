@@ -75,7 +75,7 @@ Vue.component('rl-subs-list', {
   },
 
   template: `<div class="panel panel-left">
-              <h4>{{title}} <i v-if="busy" class="fa fa-spinner fa-pulse fa-fw"></i></h4>
+              <h4>{{title}} <i v-if="busy" class="fa fa-resfresh fa-spin"></i></h4>
               <ul class="subreddits-list">
                 <li v-for="sub in subs">
                   <a :href="'#' + sub.name" @click="selectSub(sub.name)">{{sub.name}}</a>
