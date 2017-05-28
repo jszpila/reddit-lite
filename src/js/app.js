@@ -5,7 +5,6 @@
 // set active sub colors (make subreddits into own component)
 // check for hash on load
 // media queries
-// remove dupe subs?
 // TESTING!!!!!!!!!!!!!!!!
 
 var vm = new Vue({

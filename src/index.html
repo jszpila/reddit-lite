@@ -19,7 +19,8 @@
       <section id="Content">
         <div class="flex-row-container">
           <rl-subs-list v-on:on-sub-select="onSubSelect" v-on:on-search-complete="onSearchComplete" :term="term" :domain="domain"></rl-subs-list>
-          <rl-posts-list :active-sub="activeSub" :domain="domain" :searching="searching"></rl-posts-list>
+          <rl-sub-detail :active-sub="activeSub" :domain="domain" :searching="searching"></rl-sub-detail>
+          <!-- <rl-posts-list :active-sub="activeSub" :domain="domain" :searching="searching"></rl-posts-list> -->
         </div>
       </section>
     </main>
@@ -29,7 +30,9 @@
     <script src="js/components/utc-date-time.js"></script>
     <script src="js/components/post.js"></script>
     <script src="js/components/posts-list.js"></script>
-    <script src="js/components/subreddits-list.js"></script>
+    <script src="js/components/sub-sidebar.js"></script>
+    <script src="js/components/sub-detail.js"></script>
+    <script src="js/components/subs-list.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
