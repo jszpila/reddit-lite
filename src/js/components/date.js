@@ -18,5 +18,4 @@ Vue.component('rl-date', {
     }
   },
   template: `<span v-bind:class="cssClass">{{txt}} {{formatDate(utc)}}</span>`
-
 });

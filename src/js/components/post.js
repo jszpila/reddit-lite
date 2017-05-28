@@ -17,5 +17,4 @@ Vue.component('rl-post', {
                   <a :href="post.url" class="comments-link" target="_blank">{{post.num_comments}} comments</a>
                 </div>
               </div>`
-
 });
