@@ -39,11 +39,13 @@ body {
 .panel-left {
   flex: 0 1 auto;
   min-width: 200px;
+  max-width: 20%;
 }
 
 .panel-right {
   margin: 0 1rem;
   flex: 1 0 auto;
+  max-width: 80%;
 }
 
 .flex-row-container {
@@ -96,27 +98,27 @@ a:active {
   list-style: none;
 }
 
-.subreddits-list li {
+.subreddits-list .subreddit {
   height: 2rem;
   line-height: 2rem;
 }
 
-.subreddits-list a {
+.subreddit a {
   text-decoration: none;
   display: block;
   transition: border .25s linear;
   border-bottom: none;
 }
 
-.subreddits-list a:hover {
+.subreddit a:hover {
   border-bottom: solid 1px #03A9F4;
 }
 
-.subreddits-list a.active {
+.subreddit a.active {
   border-bottom: solid 1px #2196F3;
 }
 
-.subreddits-list a.active:hover {
+.subreddit-list a.active:hover {
 
 }
 
@@ -190,8 +192,7 @@ header h1 {
 
 /* Component: Posts list */
 .panel-right h4 {
-  display: inline-block;
-  margin-right: 5px;
+  margin-bottom: 0;
 }
 
 .posts-list {
@@ -200,22 +201,31 @@ header h1 {
   list-style: none;
 }
 
-.posts-list li {
+.post {
   margin: .5rem 0;
 }
 
-.posts-list .post-meta,
-.update-time {
+.post .title-link {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: block;
+}
+
+.update-time,
+.post .meta {
   font-size: .75rem;
   color: #9E9E9E;
 }
 
-.posts-list .post-meta a,
-.posts-list .post-meta a:visited {
+.post .meta a,
+.post .meta a:visited {
   color: #42A5F5;
 }
 
-.posts-list .post-meta a:hover,
-.posts-list .post-meta a:active {
+.post .meta a:hover,
+.post .meta a:active {
   color: #64B5F6;
 }
