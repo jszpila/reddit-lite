@@ -1,38 +1,35 @@
 Vue.component('rl-app-header', {
-  props: ['busy'],
+  props: ['searching'],
   data: function() {
     return {
-      searching: false,
-      term: ''
+      term: '',
+      busy: false
     }
   },
+
   watch: {
-    busy: function(val) {
-      // Reset search state after searching from text field but do not alter when other fetching is in occurring
-      if (this.searching) {
-        this.searching = false;
+    searching: function(val) {
+      this.busy = false;
+    }
+  },
+
+  methods: {
+    submitTerm: function() {
+      if (!this.busy) {
+        this.busy = true;
+        this.$emit('on-sub-search', this.term);
       }
     }
   },
-  computed: {
-    shouldDisable: function() {
-      return this.busy || this.searching || this.term.length === 0;
-    }
-  },
-  methods: {
-    submitTerm: function() {
-      this.searching = true;
-      this.$emit('search-subs', this.term);
-    }
-  },
+
   template: `<header id="TitleBar">
               <div class="flex-row-container">
                 <h1><i class="fa fa-reddit-square"></i> Reddit Lite</h1>
-                <form class="search-form">
+                <form class="search-form" @keyup.enter="submitTerm" v-on:submit.prevent>
                   <input name="Search" type="text" placeholder="Search Subreddits" v-model="term">
-                  <button @click="submitTerm" @keyup.enter="submitTerm" :disabled="shouldDisable">
-                    <i class="fa fa-search" v-show="!searching"></i>
-                    <i class="fa fa-refresh fa-spin" v-show="searching"></i>
+                  <button @click="submitTerm" :disabled="busy">
+                    <i class="fa fa-search" v-show="!busy"></i>
+                    <i class="fa fa-refresh fa-spin" v-show="busy"></i>
                   </button>
                 </form>
               </div>

@@ -1,49 +1,64 @@
 Vue.component('rl-posts-list', {
-  props: ['posts', 'name', 'domain'],
+  props: ['activeSub', 'domain', 'searching'],
   data: function() {
     return {
       timer: null,
-      busy: true
+      busy: false,
+      posts: null
     }
   },
-  watch: {
-    // Reset timer when sub is changed
-    name: function(val) {
-      // Don't stop it before it starts!
-      if (this.timer) {
-        this.stopTimer();
-      }
 
-      // Do not re-start timer without active sub (happens when searching after previously selecting a sub)
-      if (val) {
-        this.startTimer();
+  watch: {
+    activeSub: function(val) {
+      if (this.activeSub) {
+        this.getPosts();
       }
     },
-    posts: function(val) {
-      this.busy = !(val && val.length > 0);
+
+    searching: function(val) {
+      this.stopTimer();
+      this.posts = null;
     }
   },
+
   methods: {
+    // Get top 25 posts from specified sub
+    getPosts: function() {
+      var self = this;
+
+      this.stopTimer();
+
+      fetch(this.domain + '/r/' + this.activeSub + '.json').then(function(res) {
+        self.busy = false;
+        return res.json();
+      }).then(function(json) {
+        if (json.error) {
+          console.error(json.error, json.message);
+        } else {
+          self.posts = json.data.children;
+          self.startTimer();
+        }
+      });
+    },
+
     startTimer: function() {
-      this.timer = setInterval(this.refresh, 60000);
+      this.busy = false;
+      this.timer = setInterval(this.getPosts, 60000);
     },
 
     stopTimer: function() {
-      clearInterval(this.timer);
-    },
-
-    refresh: function() {
       this.busy = true;
-      this.$emit('refresh-posts', this.name);
+      clearInterval(this.timer);
     },
 
     getTimeStamp: function() {
       return new Date().getTime()/1000|0;
     }
   },
+
   template: `<div class="panel panel-right">
-              <h4 v-if="name">r/{{name}} <i v-if="busy" class="fa fa-spinner fa-pulse fa-fw"></i></h4>
-              <rl-date v-if="posts" :utc="getTimeStamp()" :txt="'Updated at'" :cssClass="'update-time'"></rl-date>
+              <h4 v-if="activeSub">r/{{activeSub}} <i v-if="busy" class="fa fa-spinner fa-pulse fa-fw"></i></h4>
+              <rl-utc-date-time v-if="posts && activeSub" :utc="getTimeStamp()" :txt="'Updated at'" :cssClass="'update-time'"></rl-utc-date-time>
               <ul class="posts-list">
                 <li v-for="post in posts">
                   <rl-post :post="post.data" :domain="domain"></rl-post>

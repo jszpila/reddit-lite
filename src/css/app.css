@@ -168,6 +168,7 @@ header h1 {
   transition: background-color .25s linear;
   border: none;
   cursor: pointer;
+  outline: none;
 }
 
 .search-form button:disabled {
@@ -181,6 +182,7 @@ header h1 {
   outline: none;
 }
 
+.search-form button:focus,
 .search-form button:active:enabled {
   background-color: #42A5F5;
   outline: none;

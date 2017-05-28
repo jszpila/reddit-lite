@@ -1,4 +1,4 @@
-Vue.component('rl-date', {
+Vue.component('rl-utc-date-time', {
   props: ['utc', 'txt', 'cssClass'],
   methods: {
     formatDate: function(utcStr) {

@@ -14,19 +14,19 @@
   </head>
   <body>
     <main id="RedditLite">
-      <rl-app-header v-on:search-subs="getSubReddits" :busy="busy"></rl-app-header>
+      <rl-app-header v-on:on-sub-search="onSubSearch" :searching="searching"></rl-app-header>
 
       <section id="Content">
         <div class="flex-row-container">
-          <rl-subs-list v-on:select-sub="getPostsBySubName" :subs="subreddits" :title="searchTitle"></rl-subs-list>
-          <rl-posts-list v-on:refresh-posts="getPostsBySubName" :posts="posts" :name="activeSub" :domain="domain"></rl-posts-list>
+          <rl-subs-list v-on:on-sub-select="onSubSelect" v-on:on-search-complete="onSearchComplete" :term="term" :domain="domain"></rl-subs-list>
+          <rl-posts-list :active-sub="activeSub" :domain="domain" :searching="searching"></rl-posts-list>
         </div>
       </section>
     </main>
 
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="js/components/header.js"></script>
-    <script src="js/components/date.js"></script>
+    <script src="js/components/utc-date-time.js"></script>
     <script src="js/components/post.js"></script>
     <script src="js/components/posts-list.js"></script>
     <script src="js/components/subreddits-list.js"></script>
