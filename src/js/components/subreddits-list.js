@@ -45,26 +45,10 @@ Vue.component('rl-subs-list', {
         if (json.error) {
           console.error(json.error, json.message);
         } else {
-          self.subs = self.formatSubData(json.data.children);
+          self.subs = json.data.children;
           self.$emit('on-search-complete');
         }
       });
-    },
-
-    // Popular and searched-for subs return data with different structures
-    // @subs - array (of objects) - subreddit data
-    // @return - array (of objects)
-    formatSubData: function(subs) {
-      var formatted = [],
-          tmp       = null;
-
-      for (var i = 0, x = subs.length; i < x; i++) {
-        tmp = subs[i].data;
-
-        formatted.push({'name': tmp.display_name ? tmp.display_name : tmp.subreddit, 'id': tmp.id});
-      }
-
-      return formatted;
     },
 
     // Dispatch event to application to indicate selected subreddit has changed
@@ -78,7 +62,7 @@ Vue.component('rl-subs-list', {
               <h4>{{title}} <i v-if="busy" class="fa fa-refresh fa-spin"></i></h4>
               <ul class="subreddits-list">
                 <li class="subreddit" v-for="sub in subs">
-                  <a :href="'#' + sub.name" @click="selectSub(sub.name)">{{sub.name}}</a>
+                  <a :href="'#' + sub.data.display_name_prefixed" @click="selectSub(sub.data.display_name_prefixed)">{{sub.data.display_name}}</a>
                 </li>
               </ul>
             </div>`

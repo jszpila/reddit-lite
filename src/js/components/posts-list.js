@@ -28,7 +28,7 @@ Vue.component('rl-posts-list', {
 
       this.stopTimer();
 
-      fetch(this.domain + '/r/' + this.activeSub + '.json').then(function(res) {
+      fetch(this.domain + '/' + this.activeSub + '.json').then(function(res) {
         self.busy = false;
         return res.json();
       }).then(function(json) {
@@ -57,7 +57,7 @@ Vue.component('rl-posts-list', {
   },
 
   template: `<div class="panel panel-right">
-              <h4 v-if="activeSub">r/{{activeSub}} <i v-if="busy" class="fa fa-refresh fa-spin"></i></h4>
+              <h4 v-if="activeSub">{{activeSub}} <i v-if="busy" class="fa fa-refresh fa-spin"></i></h4>
               <rl-utc-date-time v-if="posts && activeSub" :utc="getTimeStamp()" :txt="'Updated at'" :cssClass="'update-time txt-muted txt-smol'"></rl-utc-date-time>
               <ul class="posts-list">
                 <li class="post" v-for="post in posts">
