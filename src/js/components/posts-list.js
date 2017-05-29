@@ -38,17 +38,22 @@ Vue.component('rl-posts-list', {
 
       fetch(this.domain + '/' + this.activeSub.display_name_prefixed + '.json').then(function(res) {
         self.busy = false;
-        return res.json();
+
+        if (res.ok) {
+          return res.json();
+        }
+
+        throw new Error('Fetch failed: posts');
       }).then(function(json) {
         if (json.error) {
-          this.posts = null;
-          this.busy = false;
-          this.showError = true;
+          this.setErrorState();
           console.error(json.error, json.message);
         } else {
           self.posts = json.data.children;
           self.startTimer();
         }
+      }).catch(function(err) {
+        self.setErrorState();
       });
     },
 
@@ -64,6 +69,12 @@ Vue.component('rl-posts-list', {
 
     getTimeStamp: function() {
       return new Date().getTime()/1000|0;
+    },
+
+    setErrorState: function() {
+      this.posts = null;
+      this.busy = false;
+      this.showError = true;
     }
   },
 

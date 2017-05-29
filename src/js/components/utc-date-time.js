@@ -12,6 +12,8 @@ Vue.component('rl-utc-date-time', {
       if (h > 12) {
         h -= 12;
         meridian = 'pm';
+      } else if (h === 0) {
+        h = 12;
       }
 
       return ((d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear() + ', ' + h + ':' + d.getMinutes() + meridian);

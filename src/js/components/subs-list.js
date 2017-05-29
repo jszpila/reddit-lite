@@ -43,17 +43,22 @@ Vue.component('rl-subs-list', {
 
       fetch(url).then(function(res) {
         self.busy = false;
-        return res.json();
+
+        if (res.ok) {
+          return res.json();
+        }
+
+        throw new Error('Fetch failed: subs');
       }).then(function(json) {
         if (json.error) {
-          this.showError = true;
-          this.title = '';
-          this.subs = null;
+          this.setErrorState();
           console.error(json.error, json.message);
         } else {
           self.subs = json.data.children;
           self.$emit('on-search-complete');
         }
+      }).catch(function(err) {
+        self.setErrorState();
       });
     },
 
@@ -67,6 +72,12 @@ Vue.component('rl-subs-list', {
     // @sub - object - data for selected subreddit
     selectSub: function(sub) {
       this.$emit('on-sub-select', sub);
+    },
+
+    setErrorState: function() {
+      this.showError = true;
+      this.title = '';
+      this.subs = null;
     }
   },
 
