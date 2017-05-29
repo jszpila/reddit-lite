@@ -4,7 +4,8 @@ Vue.component('rl-subs-list', {
     return {
       busy: true,
       subs: null,
-      title: ''
+      title: '',
+      showError: false
     }
   },
 
@@ -28,6 +29,7 @@ Vue.component('rl-subs-list', {
       var self = this,
           url  = this.domain;
 
+      this.showError = false;
       this.busy = true;
 
       if (this.term === 'popular') {
@@ -43,6 +45,9 @@ Vue.component('rl-subs-list', {
         return res.json();
       }).then(function(json) {
         if (json.error) {
+          this.showError = true;
+          this.title = '';
+          this.subs = null;
           console.error(json.error, json.message);
         } else {
           self.subs = json.data.children;
@@ -59,11 +64,16 @@ Vue.component('rl-subs-list', {
   },
 
   template: `<nav id="LeftNav" class="side-column subreddits-list-container"">
-              <h4>{{title}} <i v-if="busy" class="fa fa-refresh fa-spin"></i></h4>
+              <h4 v-if="title">{{title}} <i v-if="busy" class="fa fa-refresh fa-spin"></i></h4>
               <ul class="subreddits-list">
                 <li class="subreddit" v-for="sub in subs">
                   <a :href="'#' + sub.data.display_name_prefixed" @click="selectSub(sub.data)">{{sub.data.display_name}}</a>
                 </li>
               </ul>
+
+              <div v-if="showError" class="error">
+                <i class="fa fa-frown-o fa-4x"></i>
+                <p><strong>Well, that's embarassing.</strong></p>
+              </div>
             </nav>`
 });

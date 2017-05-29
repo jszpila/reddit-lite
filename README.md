@@ -18,3 +18,5 @@ npm run dev
 yarn install
 yarn run dev
 ```
+
+You should then be able to hit [http://127.0.0.1:8080](http://127.0.0.1:8080) and see the project.
