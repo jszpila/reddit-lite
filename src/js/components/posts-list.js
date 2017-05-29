@@ -9,6 +9,12 @@ Vue.component('rl-posts-list', {
     }
   },
 
+  created: function() {
+    if (this.activeSub) {
+      this.getPosts();
+    }
+  },
+
   watch: {
     activeSub: function(val) {
       if (this.activeSub) {

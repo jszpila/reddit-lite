@@ -1,5 +1,4 @@
 // TODO:
-// check for hash on load
 // media queries
 // TESTING!!!!!!!!!!!!!!!!
 
@@ -10,6 +9,16 @@ var vm = new Vue({
     searching: false,
     activeSub: null,
     term: 'popular'
+  },
+
+  created: function() {
+    // "restore" active sub data on refresh because why not;
+    // alternately, could use local storage or somethinga as exotic as routing!
+    if (window.location.hash) {
+      this.activeSub = {
+        display_name_prefixed: window.location.hash.substr(1)
+      }
+    }
   },
 
   methods: {

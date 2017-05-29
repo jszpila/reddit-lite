@@ -229,7 +229,7 @@ header h1 {
 
 /* Component: Posts list */
 .posts-list-container {
-  padding: 0 1.5rem;
+  padding: 0 3rem 0 1.5rem;
 }
 
 .posts-list-container h4 {
