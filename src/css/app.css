@@ -94,7 +94,11 @@ a:active {
 
 /* Component: Subreddits list */
 .subreddits-list-container {
-  padding: 0 1.5rem;
+  padding: 0 1.5rem 0 0;
+}
+
+.subreddits-list-container h4 {
+  margin-left: 1.5rem;
 }
 
 .subreddits-list {
@@ -111,20 +115,26 @@ a:active {
 .subreddit a {
   text-decoration: none;
   display: block;
-  transition: border .25s linear;
-  border-bottom: none;
+  transition: background-color .25s linear, color .25s linear;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 1.5rem;
+
 }
 
 .subreddit a:hover {
-  border-bottom: solid 1px #03A9F4;
+  background-color: #03A9F4;
+  color: #FFF;
 }
 
 .subreddit a.active {
-  border-bottom: solid 1px #2196F3;
+  background-color: #2196F3;
+  color: #FFF;
 }
 
 .subreddits-list a.active:hover {
-
+  background-color: #03A9F4;
 }
 
 /* Component: header */

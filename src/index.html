@@ -16,7 +16,7 @@
     <main id="RedditLite">
       <rl-app-header v-on:on-sub-search="onSubSearch" :searching="searching"></rl-app-header>
       <section id="Body">
-        <rl-subs-list v-on:on-sub-select="onSubSelect" v-on:on-search-complete="onSearchComplete" :term="term" :domain="domain"></rl-subs-list>
+        <rl-subs-list v-on:on-sub-select="onSubSelect" v-on:on-search-complete="onSearchComplete" :active-sub="activeSub" :term="term" :domain="domain"></rl-subs-list>
         <rl-posts-list :active-sub="activeSub" :domain="domain" :searching="searching"></rl-posts-list>
         <rl-sub-sidebar :active-sub="activeSub"></rl-sub-sidebar>
       </section>

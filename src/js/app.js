@@ -1,8 +1,4 @@
 // TODO:
-// input validation & error display
-// handle no results
-// handle fetch error
-// set active sub colors (make subreddits into own component)
 // check for hash on load
 // media queries
 // TESTING!!!!!!!!!!!!!!!!

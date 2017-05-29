@@ -1,11 +1,12 @@
 Vue.component('rl-subs-list', {
-  props: ['term', 'domain'],
+  props: ['activeSub', 'term', 'domain'],
   data: function() {
     return {
       busy: true,
       subs: null,
       title: '',
-      showError: false
+      showError: false,
+      test: true
     }
   },
 
@@ -56,6 +57,12 @@ Vue.component('rl-subs-list', {
       });
     },
 
+    // Determin if specified sub is the active sub
+    // @sub - object - data for specified sub
+    isActiveSub: function(sub) {
+      return this.activeSub && (sub.data.display_name_prefixed === this.activeSub.display_name_prefixed);
+    },
+
     // Dispatch event to application to indicate selected subreddit has changed
     // @sub - object - data for selected subreddit
     selectSub: function(sub) {
@@ -67,7 +74,7 @@ Vue.component('rl-subs-list', {
               <h4 v-if="title">{{title}} <i v-if="busy" class="fa fa-refresh fa-spin"></i></h4>
               <ul class="subreddits-list">
                 <li class="subreddit" v-for="sub in subs">
-                  <a :href="'#' + sub.data.display_name_prefixed" @click="selectSub(sub.data)">{{sub.data.display_name}}</a>
+                  <a :href="'#' + sub.data.display_name_prefixed" @click="selectSub(sub.data)" v-bind:class="{'active' : isActiveSub(sub)}">{{sub.data.display_name}}</a>
                 </li>
               </ul>
 
