@@ -24,28 +24,27 @@ body {
   width: 100%;
 }
 
-#TitleBar {
+#Header {
   background-color: #3F51B5;
   color: #FFF;
   flex: 0 1 auto;
   padding: 0 1.5rem;
 }
 
+#Body {
+  display: flex;
+}
+
 #Content {
-  flex: 1 0 auto;
-  padding: 1.5rem 0 1.5rem 1.5rem;
+  flex: 3;
+  width: 60%;
+  max-width: 60%;
 }
 
-.panel-left {
-  flex: 0 1 auto;
-  min-width: 200px;
-  width: 20%;
-}
-
-.panel-right {
-  margin: 0 1rem;
-  flex: 1 0 auto;
-  max-width: 80%;
+.side-column {
+  flex: 1;
+  width: 20%%;
+  max-width: 20%;
 }
 
 .flex-row-container {
@@ -79,27 +78,11 @@ a:active {
   font-size: .75rem;
 }
 
-/* Component: breadcrumbs */
-.breadcrumbs-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.breadcrumbs-list li {
-  display: inline-block;
-}
-
-.breadcrumbs-list li::before {
-  content: " / ";
-  color: #CCC;
-}
-
-.breadcrumbs-list li:first-child::before {
-  content: "";
-}
-
 /* Component: Subreddits list */
+.subreddits-list-container {
+  padding: 0 1.5rem;
+}
+
 .subreddits-list {
   margin: 0;
   padding: 0;
@@ -126,7 +109,7 @@ a:active {
   border-bottom: solid 1px #2196F3;
 }
 
-.subreddit-list a.active:hover {
+.subreddits-list a.active:hover {
 
 }
 
@@ -199,32 +182,34 @@ header h1 {
 }
 
 /* Component: Sub detail */
-.posts-list-container {
-  width: 75%;
+.sub-description-container {
+
 }
 
-/* Component: Sub sidebar */
-.sub-sidebar {
-  width: 25%;
+.sub-description {
+  font-size: .8rem;
   background-color: #ECEFF1;
   color: #263238;
-  font-size: .8rem;
-  padding: 1rem;
+  padding: 0 0 0 1.5rem;
   overflow-x: auto;
 }
 
-.sub-sidebar a {
+.sub-description a {
   color: #546E7A;
   font-size: .8rem;
 }
 
-.sub-sidebar a:hover,
-.sub-sidebar a:active {
+.sub-description a:hover,
+.sub-description a:active {
   color: #78909C;
 }
 
 /* Component: Posts list */
-.panel-right h4 {
+.posts-list-container {
+  padding: 0 1.5rem;
+}
+
+.posts-list-container h4 {
   margin-bottom: 0;
 }
 

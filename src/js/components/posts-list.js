@@ -56,7 +56,8 @@ Vue.component('rl-posts-list', {
     }
   },
 
-  template: `<section class="posts-list-container">
+  template: `<section id="Content" class="posts-list-container">
+              <h4 v-if="activeSub">{{activeSub.display_name_prefixed}} <i v-if="busy" class="fa fa-refresh fa-spin"></i></h4>
               <rl-utc-date-time v-if="posts && activeSub" :utc="getTimeStamp()" :txt="'Updated at'" :cssClass="'update-time txt-muted txt-smol'"></rl-utc-date-time>
               <ul class="posts-list">
                 <li class="post" v-for="post in posts">

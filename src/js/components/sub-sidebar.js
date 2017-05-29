@@ -9,5 +9,7 @@ Vue.component('rl-sub-sidebar', {
     }
   },
 
-  template: `<aside v-if="activeSub" v-html="decodeHTML(activeSub.description_html)" class="sub-sidebar"></aside>`
+  template: `<aside id="Description" class="side-column sub-description-container">
+              <div class="sub-description" v-if="activeSub && activeSub.description_html" v-html="decodeHTML(activeSub.description_html)"></div>
+            </aside>`
 });

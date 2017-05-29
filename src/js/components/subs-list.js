@@ -58,12 +58,12 @@ Vue.component('rl-subs-list', {
     }
   },
 
-  template: `<section class="panel panel-left">
+  template: `<nav id="LeftNav" class="side-column subreddits-list-container"">
               <h4>{{title}} <i v-if="busy" class="fa fa-refresh fa-spin"></i></h4>
               <ul class="subreddits-list">
                 <li class="subreddit" v-for="sub in subs">
                   <a :href="'#' + sub.data.display_name_prefixed" @click="selectSub(sub.data)">{{sub.data.display_name}}</a>
                 </li>
               </ul>
-            </section>`
+            </nav>`
 });

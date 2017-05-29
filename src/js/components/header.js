@@ -22,7 +22,7 @@ Vue.component('rl-app-header', {
     }
   },
 
-  template: `<header id="TitleBar">
+  template: `<header id="Header">
               <div class="flex-row-container">
                 <h1><i class="fa fa-reddit-square"></i> Reddit Lite</h1>
                 <form class="search-form" @keyup.enter="submitTerm" v-on:submit.prevent>
