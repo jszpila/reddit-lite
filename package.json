@@ -4,13 +4,16 @@
   "description": "A Reddit browser for funsies",
   "main": "index.js",
   "repository": "https://github.com/jszpila/reddit-lite",
-  "author": "Jan Szpila <jszpila@gmail.com>",
+  "author": "Jan Szpila <jan@szpi.la>",
   "license": "MIT",
   "scripts": {
     "test": "test",
     "dev": "http-server src/"
   },
   "dependencies": {
+    "karma": "^1.7.0",
+    "mocha": "^3.4.2",
+    "webpack": "^2.6.1"
   },
   "devDependencies": {
     "http-server": "^0.10.0"
