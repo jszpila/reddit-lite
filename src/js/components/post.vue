@@ -4,7 +4,7 @@ export default Vue.component('rl-post', {
   props: ['post', 'domain'],
   methods: {
     makeAuthorUrl: function(author) {
-      return this.domain + '/user/' + author;
+      return this.domain + 'user/' + author;
     }
   },
   template: `<div class="container">

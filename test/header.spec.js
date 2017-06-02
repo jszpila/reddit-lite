@@ -1,6 +1,6 @@
-var assert = require('assert'),
-    Vue    = require('vue'),
-    header = '../src/js/components/header';
+import assert from 'assert';
+import Vue    from 'vue/dist/vue';
+import header from '../src/js/components/header.vue';
 
 describe('header.vue', function() {
   describe('#submitTerm', function() {

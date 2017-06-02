@@ -23,6 +23,7 @@
     "jsdom-global": "^3.0.2",
     "mocha": "^3.4.2",
     "vue": "^2.3.3",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "whatwg-fetch": "^2.0.3"
   }
 }

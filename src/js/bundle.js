@@ -9818,7 +9818,7 @@ return Vue$3;
   props: ['post', 'domain'],
   methods: {
     makeAuthorUrl: function(author) {
-      return this.domain + '/user/' + author;
+      return this.domain + 'user/' + author;
     }
   },
   template: `<div class="container">

@@ -1,6 +1,6 @@
-var assert   = require('assert'),
-    Vue      = require('vue'),
-    subslist = '../src/js/components/subs-list';
+import assert   from 'assert';
+import Vue      from 'vue/dist/vue';
+import subsList from '../src/js/components/subs-list.vue';
 
 describe('subs-list.vue', function() {
   describe('#getSubReddits', function() {
@@ -23,7 +23,7 @@ describe('subs-list.vue', function() {
 
   describe('#setErrorState', function() {
     it('should display the error message', function() {
-
+      assert(true);
     });
   });
 });

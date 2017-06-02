@@ -1,6 +1,8 @@
-var assert = require('assert'),
-    Vue    = require('vue'),
-    app    = '../src/js/app';
+import 'jsdom-global/register';
+import assert from 'assert';
+import Vue    from 'vue/dist/vue';
+import app    from '../src/js/app.vue';
+// var app    = '../src/js/app';
 
 describe('app.vue', function() {
   describe('#onSubSearch', function() {

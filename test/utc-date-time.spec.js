@@ -1,5 +1,5 @@
 import assert      from 'assert';
-import Vue         from 'vue';
+import Vue         from 'vue/dist/vue';
 import utcDateTime from '../src/js/components/utc-date-time.vue';
 
 describe('utc-date-time.vue', function() {
