@@ -13,9 +13,9 @@ export default Vue.component('rl-subs-list', {
 
   created: function() {
     // Fetch popular subs on initial load
-    if (!this.subs) {
-      this.getSubReddits();
-    }
+    //if (!this.subs) {
+    //  this.getSubReddits();
+    //}
   },
 
   watch: {
@@ -40,7 +40,7 @@ export default Vue.component('rl-subs-list', {
         url += 'subreddits/popular.json';
       } else {
         this.title = '"' + this.term + '" Subreddits';
-        url += 'search.json?type=sr&q=' + encodeURIComponent(this.term);
+        url += 'search.json?type=sr&q=' + this.term;
       }
 
       fetch(url).then(function(res) {
@@ -65,6 +65,10 @@ export default Vue.component('rl-subs-list', {
         }
       }).catch(function(err) {
         self.setErrorState();
+
+        if (cb) {
+          cb();
+        }
       });
     },
 

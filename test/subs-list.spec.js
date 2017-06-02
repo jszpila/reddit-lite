@@ -4,9 +4,9 @@ import subsList from '../src/js/components/subs-list.vue';
 
 describe('subs-list.vue', function() {
   describe('#getSubReddits - popular', function() {
-    it('should populate "popular" subreddits', function(done) {
-      const Constructor = Vue.extend(subsList);
-      const comp = new Constructor({
+    it('should populate 25 "popular" subreddits', function(done) {
+      let Constructor = Vue.extend(subsList);
+      let comp = new Constructor({
         propsData: {
           domain:   'https://www.reddit.com/',
           term:     'popular',
@@ -21,10 +21,10 @@ describe('subs-list.vue', function() {
     });
   });
 
-  describe('#getSubReddits - search for "test"', function() {
-    it('should populate subreddits matching "test" search term', function() {
-      const Constructor = Vue.extend(subsList);
-      const comp = new Constructor({
+  describe('#getSubReddits - test', function() {
+    it('should populate 25 subreddits matching search term "test"', function(done) {
+      let Constructor = Vue.extend(subsList);
+      let comp = new Constructor({
         propsData: {
           domain:   'https://www.reddit.com/',
           term:     'test',
@@ -33,26 +33,37 @@ describe('subs-list.vue', function() {
       }).$mount();
 
       comp.getSubReddits(function() {
-        console.log(comp.subs.length, comp.title, comp.term)
-        assert((comp.subs.length > 0) && (comp.title === '"test" Subreddits'));
+        assert((comp.subs.length === 25) && (comp.title === '"test" Subreddits'));
         return done();
       });
     });
   });
 
-  describe('#getSubReddits - search for gibberish', function() {
-    it('should NOT populate any subreddits matching "68jo8yyou8" search term', function() {
-      assert(true);
+  describe('#getSubReddits - popular', function() {
+    it('should NOT populate any results when searching for gibberish "68jo y997t6"', function(done) {
+      let Constructor = Vue.extend(subsList);
+      let comp = new Constructor({
+        propsData: {
+          domain:   'https://www.reddit.com/',
+          term:     '68jo y997t6',
+          activeSub: null
+        }
+      }).$mount();
+
+      comp.getSubReddits(function() {
+        assert((comp.subs.length === 0) && (comp.title === '"68jo y997t6" Subreddits'));
+        return done();
+      });
     });
   });
 
   describe('#isActiveSub - match', function() {
     it('should match the specified sub as the active sub', function() {
-      const Constructor = Vue.extend(subsList);
-      const comp = new Constructor({
+      let Constructor = Vue.extend(subsList);
+      let comp = new Constructor({
         propsData: {
           domain:    'https://www.reddit.com/',
-          term:      'isActiveSub test',
+          term:      'popular',
           activeSub: {
             dispay_name_prefixed: 'r/test'
           }
@@ -65,11 +76,11 @@ describe('subs-list.vue', function() {
 
   describe('#isActiveSub - not match', function() {
     it('should NOT match the specified sub as the active sub', function() {
-      const Constructor = Vue.extend(subsList);
-      const comp = new Constructor({
+      let Constructor = Vue.extend(subsList);
+      let comp = new Constructor({
         propsData: {
           domain:    'https://www.reddit.com/',
-          term:      'isActiveSub test',
+          term:      'popular',
           activeSub: {
             dispay_name_prefixed: 'r/test'
           }
