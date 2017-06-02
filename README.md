@@ -16,7 +16,7 @@ $PM run dev  # star dev server on localhost:8080
 
 ### Testing
 ```bash
-npm test
+$PM test
 ```
 
 You should then be able to hit [http://localhost:8080](http://localhost:8080) and see the project.
