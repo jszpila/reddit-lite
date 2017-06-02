@@ -1,4 +1,6 @@
-Vue.component('rl-post', {
+import Vue from 'vue';
+
+export default Vue.component('rl-post', {
   props: ['post', 'domain'],
   methods: {
     makeAuthorUrl: function(author) {

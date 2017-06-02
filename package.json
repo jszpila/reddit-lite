@@ -7,15 +7,19 @@
   "author": "Jan Szpila <jan@szpi.la>",
   "license": "MIT",
   "scripts": {
-    "test": "test",
+    "test": "./node_modules/mocha/bin/mocha",
     "dev": "http-server src/"
   },
-  "dependencies": {
-    "karma": "^1.7.0",
-    "mocha": "^3.4.2",
-    "webpack": "^2.6.1"
-  },
   "devDependencies": {
-    "http-server": "^0.10.0"
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-runtime": "^6.23.0",
+    "http-server": "^0.10.0",
+    "mocha": "^3.4.2",
+    "vue": "^2.3.3",
+    "webpack": "^2.6.1"
   }
 }

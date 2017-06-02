@@ -1,4 +1,6 @@
-Vue.component('rl-posts-list', {
+import Vue from 'vue';
+
+export default Vue.component('rl-posts-list', {
   props: ['activeSub', 'domain', 'searching'],
   data: function() {
     return {

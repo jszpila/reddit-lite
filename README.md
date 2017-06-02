@@ -7,16 +7,16 @@ A Reddit clone, just for funsies.
 
 
 ### Doing the Thing
+Where $PM is your package manager of choice (npm or yarn):
 ``` bash
-# npm
-npm install
-npm run dev
+$PM install  # Install dependencies
+webpack      # build files
+$PM run dev  # star dev server on localhost:8080
 ```
 
-``` bash
-# yarn
-yarn install
-yarn run dev
+### Testing
+```bash
+npm test
 ```
 
-You should then be able to hit [http://127.0.0.1:8080](http://127.0.0.1:8080) and see the project.
+You should then be able to hit [http://localhost:8080](http://localhost:8080) and see the project.

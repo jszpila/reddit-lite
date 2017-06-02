@@ -1,4 +1,6 @@
-Vue.component('rl-subs-list', {
+import Vue from 'vue';
+
+export default Vue.component('rl-subs-list', {
   props: ['activeSub', 'term', 'domain'],
   data: function() {
     return {
