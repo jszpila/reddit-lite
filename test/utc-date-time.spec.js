@@ -4,7 +4,7 @@ import utcDateTime from '../src/js/components/utc-date-time.vue';
 
 describe('utc-date-time.vue', function() {
   describe('#formatDate', function() {
-    it('convert a UTC time stap to M/D/YYYY h:mma format', function() {
+    it('convert a UTC time stamp to M/D/YYYY h:mma format', function() {
       const Constructor = Vue.extend(utcDateTime);
       const comp = new Constructor().$mount();
 

@@ -7,8 +7,7 @@ export default Vue.component('rl-subs-list', {
       busy: true,
       subs: null,
       title: '',
-      showError: false,
-      test: true
+      showError: false
     }
   },
 
@@ -28,7 +27,8 @@ export default Vue.component('rl-subs-list', {
 
   methods: {
     // Get subreddits matching specified term
-    getSubReddits: function() {
+    // @cb - function - callback to trigger once complete
+    getSubReddits: function(cb) {
       var self = this,
           url  = this.domain;
 
@@ -58,6 +58,10 @@ export default Vue.component('rl-subs-list', {
         } else {
           self.subs = json.data.children;
           self.$emit('on-search-complete');
+        }
+
+        if (cb) {
+          cb();
         }
       }).catch(function(err) {
         self.setErrorState();

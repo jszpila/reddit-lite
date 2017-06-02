@@ -11,7 +11,7 @@ Where $PM is your package manager of choice (npm or yarn):
 ``` bash
 $PM install  # Install dependencies
 webpack      # build files
-$PM run dev  # star dev server on localhost:8080
+$PM run dev  # start dev server on localhost:8080
 ```
 
 ### Testing
