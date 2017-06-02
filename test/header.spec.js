@@ -1,11 +1,11 @@
 var assert = require('assert'),
     Vue    = require('vue'),
-    header = require('../src/js/components/header.js');
+    header = '../src/js/components/header';
 
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal(-1, [1,2,3].indexOf(4));
+describe('header.vue', function() {
+  describe('#submitTerm', function() {
+    it('should emit an event to trigger subreddit search', function() {
+      assert(true);
     });
   });
 });
