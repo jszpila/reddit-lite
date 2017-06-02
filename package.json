@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register",
-    "dev": "http-server src/"
+    "dev": "http-server public/"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

@@ -13,9 +13,9 @@ export default Vue.component('rl-subs-list', {
 
   created: function() {
     // Fetch popular subs on initial load
-    //if (!this.subs) {
-    //  this.getSubReddits();
-    //}
+    if (!this.subs) {
+      this.getSubReddits();
+    }
   },
 
   watch: {

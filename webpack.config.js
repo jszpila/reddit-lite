@@ -2,7 +2,7 @@ module.exports = {
   entry: './src/js/app.vue',
   output: {
     path: __dirname,
-    filename: './src/js/bundle.js'
+    filename: './public/js/bundle.js'
   },
   module: {
     rules: [

@@ -90,16 +90,4 @@ describe('subs-list.vue', function() {
       assert(comp.isActiveSub({data: {dispay_name_prefixed: 'r/test123'}}), false);
     });
   });
-
-  describe('#selectSub', function() {
-    it('should emit the sub selection event', function() {
-      assert(true);
-    });
-  });
-
-  describe('#setErrorState', function() {
-    it('should display the error message', function() {
-      assert(true);
-    });
-  });
 });
