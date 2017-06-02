@@ -7,7 +7,7 @@
   "author": "Jan Szpila <jan@szpi.la>",
   "license": "MIT",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --require babel-register",
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register",
     "dev": "http-server src/"
   },
   "devDependencies": {
@@ -19,6 +19,8 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-runtime": "^6.23.0",
     "http-server": "^0.10.0",
+    "jsdom": "^11.0.0",
+    "jsdom-global": "^3.0.2",
     "mocha": "^3.4.2",
     "vue": "^2.3.3",
     "webpack": "^2.6.1"
