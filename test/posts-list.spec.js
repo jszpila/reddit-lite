@@ -4,8 +4,22 @@ import postsList from '../src/js/components/posts-list.vue';
 
 describe('posts-list.vue', function() {
   describe('#getPosts', function() {
-    it('should return 25 posts matching search criteria', function() {
-      assert(true);
+    it('should populate 25 posts from r/AskReddit', function(done) {
+      let Constructor = Vue.extend(postsList);
+      let comp = new Constructor({
+        propsData: {
+          domain:   'https://www.reddit.com/',
+          term:     '',
+          activeSub: {
+            display_name_prefixed: 'r/AskReddit'
+          }
+        }
+      }).$mount();
+
+      comp.getPosts(function() {
+        assert((comp.posts.length === 25));
+        return done();
+      });
     });
   });
 

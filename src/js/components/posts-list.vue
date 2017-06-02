@@ -32,7 +32,8 @@ export default Vue.component('rl-posts-list', {
 
   methods: {
     // Get top 25 posts from specified sub
-    getPosts: function() {
+    // @cb - function - callback
+    getPosts: function(cb) {
       var self = this;
 
       this.showError = false;
@@ -54,8 +55,16 @@ export default Vue.component('rl-posts-list', {
           self.posts = json.data.children;
           self.startTimer();
         }
+
+        if (cb) {
+          cb();
+        }
       }).catch(function(err) {
         self.setErrorState();
+
+        if (cb) {
+          cb();
+        }
       });
     },
 
