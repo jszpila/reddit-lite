@@ -94,6 +94,7 @@ export default Vue.component('rl-posts-list', {
 
               <rl-utc-date-time v-if="posts && activeSub" :utc="getTimeStamp()" :txt="'Updated at'" :cssClass="'update-time txt-muted txt-smol'"></rl-utc-date-time>
 
+              {{busy}}
               <ul class="posts-list">
                 <li class="post" v-for="post in posts">
                   <rl-post :post="post.data" :domain="domain"></rl-post>

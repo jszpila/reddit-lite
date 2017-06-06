@@ -7,6 +7,7 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
+  overflow: none;
 }
 
 body {
@@ -20,8 +21,8 @@ body {
   display: flex;
   flex-direction: column;
   align-content: flex-start;
-  height: 100%;
   width: 100%;
+  height: 100vh;
 }
 
 #Header {
@@ -33,12 +34,18 @@ body {
 
 #Body {
   display: flex;
+  height: 100vh;
 }
 
 #Content {
   flex: 3;
   width: 60%;
   max-width: 60%;
+  overflow-y: auto;
+}
+
+#LeftNav {
+  background-color: #ECEFF1;
 }
 
 .side-column {
@@ -94,7 +101,7 @@ a:active {
 
 /* Component: Subreddits list */
 .subreddits-list-container {
-  padding: 0 1.5rem 0 0;
+  padding: 0;
 }
 
 .subreddits-list-container h4 {
@@ -105,6 +112,11 @@ a:active {
   margin: 0;
   padding: 0;
   list-style: none;
+  -webkit-animation: fadein 1s;
+     -moz-animation: fadein 1s;
+      -ms-animation: fadein 1s;
+       -o-animation: fadein 1s;
+          animation: fadein 1s;
 }
 
 .subreddits-list .subreddit {
@@ -129,12 +141,13 @@ a:active {
 }
 
 .subreddit a.active {
-  background-color: #2196F3;
-  color: #FFF;
+  background-color: #FFF;
+  color: #2196F3;
 }
 
 .subreddits-list a.active:hover {
   background-color: #03A9F4;
+  color: #FFF;
 }
 
 /* Component: header */
@@ -207,7 +220,12 @@ header h1 {
 
 /* Component: Sub detail */
 .sub-description-container {
-
+  overflow-y: auto;
+  -webkit-animation: fadein 1s;
+     -moz-animation: fadein 1s;
+      -ms-animation: fadein 1s;
+       -o-animation: fadein 1s;
+          animation: fadein 1s;
 }
 
 .sub-description {
@@ -230,6 +248,15 @@ header h1 {
 /* Component: Posts list */
 .posts-list-container {
   padding: 0 3rem 0 1.5rem;
+  -webkit-animation: fadein 1s;
+     -moz-animation: fadein 1s;
+      -ms-animation: fadein 1s;
+       -o-animation: fadein 1s;
+          animation: fadein 1s;
+}
+
+.posts-list-container.busy {
+  background-color: #0F0;
 }
 
 .posts-list-container h4 {
@@ -254,4 +281,30 @@ header h1 {
 .post .meta a:hover,
 .post .meta a:active {
   color: #64B5F6;
+}
+
+/* Animations */
+@keyframes fadein {
+  from {opacity: 0;}
+  to   {opacity: 1;}
+}
+
+@-moz-keyframes fadein {
+  from {opacity: 0;}
+  to   {opacity: 1;}
+}
+
+@-webkit-keyframes fadein {
+  from {opacity: 0;}
+  to   {opacity: 1;}
+}
+
+@-ms-keyframes fadein {
+  from {opacity: 0;}
+  to   {opacity: 1;}
+}
+
+@-o-keyframes fadein {
+  from {opacity: 0;}
+  to   {opacity: 1;}
 }
