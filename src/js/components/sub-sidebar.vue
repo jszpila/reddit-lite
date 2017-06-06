@@ -2,6 +2,10 @@ import Vue from 'vue';
 
 export default Vue.component('rl-sub-sidebar', {
   props: ['activeSub'],
+  created: function() {
+    console.log('created');
+    console.log(this.activeSub);
+  },
   methods: {
     decodeHTML: function(str) {
       // TODO: find a non-stupid way to do this
