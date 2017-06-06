@@ -29,7 +29,7 @@ export default Vue.component('rl-app-header', {
                 <h1><i class="fa fa-reddit-square"></i> Reddit Lite</h1>
                 <form class="search-form" @keyup.enter="submitTerm" v-on:submit.prevent>
                   <input name="Search" type="text" placeholder="Search Subreddits" v-model="term">
-                  <button @click="submitTerm" :disabled="busy">
+                  <button @click="submitTerm" :disabled="busy || term === ''">
                     <i class="fa fa-search" v-show="!busy"></i>
                     <i class="fa fa-refresh fa-spin" v-show="busy"></i>
                   </button>

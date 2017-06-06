@@ -4,18 +4,18 @@ import subsList from '../src/js/components/subs-list.vue';
 
 describe('subs-list.vue', function() {
   describe('#getSubReddits - popular', function() {
-    it('should populate 25 "popular" subreddits', function(done) {
+    it('should populate 25 default subreddits', function(done) {
       let Constructor = Vue.extend(subsList);
       let comp = new Constructor({
         propsData: {
           domain:   'https://www.reddit.com/',
-          term:     'popular',
+          term:     'default',
           activeSub: null
         }
       }).$mount();
 
       comp.getSubReddits(function() {
-        assert((comp.subs.length === 25) && (comp.title === 'Popular Subreddits'));
+        assert((comp.subs.length === 25) && (comp.title === 'Default Subreddits'));
         return done();
       });
     });

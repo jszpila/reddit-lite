@@ -26,7 +26,7 @@ body {
 }
 
 #Header {
-  background-color: #3F51B5;
+  background-color: #2196F3;
   color: #FFF;
   flex: 0 1 auto;
   padding: 0 1.5rem;
@@ -45,6 +45,15 @@ body {
 }
 
 #LeftNav {
+  background-color: #ECEFF1;
+  transition: background-color .25s linear;
+}
+
+#Description {
+  background-color: #FFF;
+}
+
+#Description.hasContent {
   background-color: #ECEFF1;
 }
 
@@ -194,27 +203,23 @@ header h1 {
   height: 2rem;
   width: 2rem;
   line-height: 1.5rem;
-  background-color: #2196F3;
+  background-color: #0D47A1;
   transition: background-color .25s linear;
   border: none;
   cursor: pointer;
   outline: none;
 }
 
-.search-form button:disabled {
-  background-color: #9E9E9E;
+.search-form button:disabled,
+.search-form button:hover:disabled {
+  background-color: #B0BEC5;
   cursor: not-allowed;
-  outline: none;
-}
-
-.search-form button:hover:enabled,{
-  background-color: #03A9F4;
   outline: none;
 }
 
 .search-form button:focus,
 .search-form button:active:enabled {
-  background-color: #42A5F5;
+  background-color: #1E88E5;
   outline: none;
 }
 
@@ -230,7 +235,6 @@ header h1 {
 
 .sub-description {
   font-size: .8rem;
-  background-color: #ECEFF1;
   color: #263238;
   padding: 1rem 1.5rem;
 }
@@ -271,6 +275,10 @@ header h1 {
 
 .post {
   margin: .5rem 0;
+}
+
+.post a {
+  word-wrap: break-word;
 }
 
 .post .meta a,

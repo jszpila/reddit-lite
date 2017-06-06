@@ -12,7 +12,7 @@ let app = new Vue({
     domain: 'https://www.reddit.com/',
     searching: false,
     activeSub: null,
-    term: 'popular'
+    term: 'default'
   },
 
   created: function() {

@@ -35,9 +35,9 @@ export default Vue.component('rl-subs-list', {
       this.showError = false;
       this.busy = true;
 
-      if (this.term === 'popular') {
-        this.title = 'Popular Subreddits';
-        url += 'subreddits/popular.json';
+      if (this.term === 'default') {
+        this.title = 'Default Subreddits';
+        url += 'subreddits/default.json';
       } else {
         this.title = '"' + this.term + '" Subreddits';
         url += 'search.json?type=sr&q=' + this.term;
