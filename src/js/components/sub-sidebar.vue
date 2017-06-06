@@ -27,7 +27,7 @@ export default Vue.component('rl-sub-sidebar', {
           self.setErrorState();
           console.error(json.error, json.message);
         } else {
-          self.hasContent = !(json.data.descritpion_html == null);
+          self.hasContent = !(json.data.descritpion_html === null);
           self.content = self.decodeHTML(json.data.description_html);
         }
 
