@@ -8,7 +8,9 @@
   "license": "MIT",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register",
-    "dev": "http-server public/"
+    "dev": "http-server public/",
+    "build": "webpack",
+    "start": "webpack && ./node_modules/mocha/bin/mocha --compilers js:babel-core/register && http-server public/"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
