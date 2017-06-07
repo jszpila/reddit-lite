@@ -12,6 +12,12 @@ export default Vue.component('rl-sub-sidebar', {
     if (window.location.hash) {
       var self = this;
 
+      if (window.location.hash && this.activeSub === null) {
+        this.activeSub = {
+          display_name_prefixed: window.location.hash.substr(1)
+        }
+      }
+
       fetch(this.domain + '/' + this.activeSub.display_name_prefixed + '/about.json').then(function(res) {
         self.busy = false;
 
@@ -25,7 +31,7 @@ export default Vue.component('rl-sub-sidebar', {
           self.setErrorState();
           console.error(json.error, json.message);
         } else {
-          self.hasContent = !(json.data.descritpion_html === null);
+          self.hasContent = !(json.data.description_html === null);
           self.content = self.decodeHTML(json.data.description_html);
         }
 
@@ -65,10 +71,10 @@ export default Vue.component('rl-sub-sidebar', {
       this.showError = false;
 
       if (this.activeSub && this.activeSub.description_html) {
-        this.content = this.activeSub.description_html;
+        this.content = this.decodeHTML(this.activeSub.description_html);
       }
 
-      return this.decodeHTML(this.content);
+      return this.content;
     },
 
     setErrorState: function() {
