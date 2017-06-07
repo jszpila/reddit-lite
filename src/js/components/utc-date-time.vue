@@ -1,5 +1,3 @@
-import Vue from 'vue';
-
 export default Vue.component('rl-utc-date-time', {
     props: ['utc', 'txt', 'cssClass'],
     methods: {

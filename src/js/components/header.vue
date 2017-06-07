@@ -1,5 +1,3 @@
-import Vue from 'vue';
-
 export default Vue.component('rl-app-header', {
   props: ['searching'],
   data: function() {

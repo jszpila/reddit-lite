@@ -1,5 +1,3 @@
-import Vue from 'vue';
-
 export default Vue.component('rl-post', {
   props: ['post', 'domain'],
   methods: {

@@ -1,4 +1,3 @@
-import Vue         from 'vue';
 import Header      from './components/header.vue';
 import UTCDateTime from './components/utc-date-time.vue';
 import Post        from './components/post.vue';
