@@ -1,5 +1,4 @@
 import assert from 'assert';
-import Vue    from 'vue/dist/vue';
 import post   from '../src/js/components/post.vue';
 
 describe('post.vue', function() {

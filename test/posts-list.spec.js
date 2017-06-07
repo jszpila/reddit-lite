@@ -1,5 +1,4 @@
 import assert    from 'assert';
-import Vue       from 'vue/dist/vue';
 import postsList from '../src/js/components/posts-list.vue';
 
 describe('posts-list.vue', function() {

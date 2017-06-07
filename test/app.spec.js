@@ -1,9 +1,20 @@
 import 'jsdom-global/register';
 import assert from 'assert';
-import Vue    from 'vue/dist/vue';
 import app    from '../src/js/app.vue';
 
 describe('app.vue', function() {
+  describe('#created', function() {
+    it('should initialize the application without a default subreddit', function() {
+      assert(true);
+    });
+  });
+
+  describe('#created', function() {
+    it('should initialize the application with r/AskReddit as the active subreddit', function() {
+      assert(true);
+    });
+  });
+
   describe('#onSubSearch', function() {
     it('should trigger subreddit search', function() {
       assert(true);

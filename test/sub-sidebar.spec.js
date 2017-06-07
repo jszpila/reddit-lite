@@ -1,6 +1,4 @@
-import 'jsdom-global/register';
 import assert     from 'assert';
-import Vue        from 'vue/dist/vue';
 import subSideBar from '../src/js/components/sub-sidebar.vue';
 
 describe('sub-sidebar.vue', function() {

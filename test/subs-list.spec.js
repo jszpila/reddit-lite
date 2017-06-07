@@ -1,5 +1,4 @@
 import assert   from 'assert';
-import Vue      from 'vue/dist/vue';
 import subsList from '../src/js/components/subs-list.vue';
 
 describe('subs-list.vue', function() {
