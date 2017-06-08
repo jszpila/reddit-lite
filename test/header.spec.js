@@ -35,7 +35,7 @@ describe('header.vue', function() {
   });
 
   describe('#watch - term', function() {
-    it('busy should false when searching is true', function() {
+    it('busy should false when searching is true', function(done) {
       const Constructor = Vue.extend(header);
       const comp = new Constructor({
         propsData: {
@@ -45,12 +45,15 @@ describe('header.vue', function() {
 
       comp.searching = true;
 
-      assert(comp.busy === false);
+      Vue.nextTick(() => {
+        assert(comp.busy === false);
+        done();
+      });
     });
   });
 
   describe('#submitTerm', function() {
-    it('busy should true when a search is submitted', function() {
+    it('busy should true when a search is submitted', function(done) {
       const Constructor = Vue.extend(header);
       const comp = new Constructor({
         propsData: {
@@ -60,7 +63,10 @@ describe('header.vue', function() {
 
       comp.submitTerm();
 
-      assert(comp.busy === true);
+      Vue.nextTick(() => {
+        assert(comp.busy === true);
+        done();
+      });
     });
   });
 });
