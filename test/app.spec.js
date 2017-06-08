@@ -3,8 +3,14 @@ import app    from '../src/js/app.vue';
 
 describe('app.vue', function() {
   describe('#created', function() {
-    it('should initialize the application without a default subreddit', function() {
+    it('should initialize the application without a default subreddit if there is nothing in the location hash', function(done) {
       window.location.hash = '';
+
+      const vm = new Vue({
+        el: document.getElementById('RedditLite')}
+      ).$mount();
+
+      // ???
 
       assert(true);
     });
