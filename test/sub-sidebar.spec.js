@@ -57,6 +57,77 @@ describe('sub-sidebar.vue', function() {
     });
   });
 
+  describe('#watch - activeSub, with content', function(done) {
+    it('should set new content when activeSub is changed', function(done) {
+      const Constructor = Vue.extend(subSideBar);
+      const comp = new Constructor({
+          propsData: {
+            domain:   'https://www.reddit.com/',
+            activeSub: {
+              display_name_prefixed: 'r/AskReddit',
+              description_html:      '<><<tHe qu!ck brown $% fox jumP3d ()ver the lAzy d0ge!><'
+            }
+          }}).$mount();
+
+      comp.activeSub = {
+        display_name_prefixed: 'r/test',
+        description_html:      'new content!'
+      };
+
+      Vue.nextTick(() => {
+        assert(comp.content === 'new content!');
+        done();
+      });
+    });
+  });
+
+  describe('#watch - activeSub, empty content', function(done) {
+    it('should not have any content when activeSub is changed to something with blank description_html field', function(done) {
+      const Constructor = Vue.extend(subSideBar);
+      const comp = new Constructor({
+          propsData: {
+            domain:   'https://www.reddit.com/',
+            activeSub: {
+              display_name_prefixed: 'r/AskReddit',
+              description_html:      '<><<tHe qu!ck brown $% fox jumP3d ()ver the lAzy d0ge!><'
+            }
+          }}).$mount();
+
+      comp.activeSub = {
+        display_name_prefixed: 'r/test',
+        description_html:      ''
+      };
+
+      Vue.nextTick(() => {
+        assert(comp.content === '');
+        done();
+      });
+    });
+  });
+
+  describe('#watch - activeSub, missing description_html', function(done) {
+    it('should not have any content when activeSub is changed to something without description_html field', function(done) {
+      const Constructor = Vue.extend(subSideBar);
+      const comp = new Constructor({
+          propsData: {
+            domain:   'https://www.reddit.com/',
+            activeSub: {
+              display_name_prefixed: 'r/AskReddit',
+              description_html:      '<><<tHe qu!ck brown $% fox jumP3d ()ver the lAzy d0ge!><'
+            }
+          }}).$mount();
+
+      comp.activeSub = {
+        display_name_prefixed: 'r/test'
+      };
+
+      Vue.nextTick(() => {
+        assert(comp.content === '');
+        done();
+      });
+    });
+  });
+
   describe('#decodeHTML', function() {
     it('should convert escaped text to HTML', function() {
       const Constructor = Vue.extend(subSideBar);
