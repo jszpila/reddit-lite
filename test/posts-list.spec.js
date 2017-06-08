@@ -24,19 +24,41 @@ describe('posts-list.vue', function() {
 
   describe('#startTimer', function() {
     it('should start the timer', function() {
-      assert(true);
+      let Constructor = Vue.extend(postsList);
+      let comp = new Constructor({
+        propsData: {
+          domain:   'https://www.reddit.com/',
+          term:     '',
+          activeSub: {
+            display_name_prefixed: 'r/AskReddit'
+          }
+        }
+      }).$mount();
+
+      comp.startTimer();
+
+      assert((comp.busy === false) && (comp.timer !== null));
     });
   });
 
-  describe('#getTimeStamp', function() {
-    it('should return the current UTC time stamp', function() {
-      assert(true);
-    });
-  });
+  describe('#stopTimer', function() {
+    it('should stop the timer after it has started', function() {
+      let Constructor = Vue.extend(postsList);
+      let comp = new Constructor({
+        propsData: {
+          domain:   'https://www.reddit.com/',
+          term:     '',
+          activeSub: {
+            display_name_prefixed: 'r/AskReddit'
+          }
+        }
+      }).$mount();
 
-  describe('#setErrorState', function() {
-    it('should display an error message', function() {
-      assert(true);
+      comp.startTimer();
+
+      comp.stopTimer();
+
+      assert((comp.busy === true) && (comp.timer['0'] === null));
     });
   });
 });
