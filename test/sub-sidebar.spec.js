@@ -2,7 +2,7 @@ import assert     from 'assert';
 import subSideBar from '../src/js/components/sub-sidebar.vue';
 
 describe('sub-sidebar.vue', function() {
-  describe('#created', function() {
+  describe('#created - without location hash', function() {
     it('should NOT have any content if initialized without a subbreddit in the location hash', function(done) {
       window.location.hash = '';
 
@@ -20,7 +20,7 @@ describe('sub-sidebar.vue', function() {
     });
   });
 
-  describe('#created', function() {
+  describe('#created - with location hash', function() {
     it('should set active subbreddit if there is one in the location hash', function(done) {
       window.location.hash = '#r/AskReddit';
 
@@ -38,7 +38,7 @@ describe('sub-sidebar.vue', function() {
     });
   });
 
-  describe('#created', function() {
+  describe('#created - with activeSub', function() {
     it('should have content if initialized with a subbreddit data as a prop', function(done) {
       const Constructor = Vue.extend(subSideBar);
       const comp = new Constructor({
@@ -128,7 +128,7 @@ describe('sub-sidebar.vue', function() {
     });
   });
 
-  describe('#decodeHTML', function() {
+  describe('#decodeHTML - escaped HTML content', function() {
     it('should convert escaped text to HTML', function() {
       const Constructor = Vue.extend(subSideBar);
       const comp = new Constructor({
@@ -144,7 +144,7 @@ describe('sub-sidebar.vue', function() {
     });
   });
 
-  describe('#decodeHTML', function() {
+  describe('#decodeHTML - plain content', function() {
     it('should NOT alter text that does not contain escaped HTML', function() {
       const Constructor = Vue.extend(subSideBar);
       const comp = new Constructor({
@@ -160,7 +160,7 @@ describe('sub-sidebar.vue', function() {
     });
   });
 
-  describe('#getContent', function() {
+  describe('#getContent - escaped HTML string', function() {
     it('should set the sidebar content to HTML, converted from escaped HTML content', function() {
       const Constructor = Vue.extend(subSideBar);
       const comp = new Constructor({
@@ -178,7 +178,7 @@ describe('sub-sidebar.vue', function() {
     });
   });
 
-  describe('#getContent', function() {
+  describe('#getContent - plain text string', function() {
     it('should set the sidebar content and NOT alter text that does not contain encoded characters', function() {
       const Constructor = Vue.extend(subSideBar);
       const comp = new Constructor({

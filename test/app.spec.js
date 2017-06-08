@@ -2,7 +2,7 @@ import assert from 'assert';
 import app    from '../src/js/app.vue';
 
 describe('app.vue', function() {
-  describe('#created', function() {
+  describe('#created - without location hash', function() {
     it('should initialize the application without a default subreddit if there is nothing in the location hash', function() {
       window.location.hash = '';
 
@@ -16,7 +16,7 @@ describe('app.vue', function() {
     });
   });
 
-  describe('#created', function() {
+  describe('#created - with location hash', function() {
     it('should initialize the application with r/AskReddit as the active subreddit', function() {
       window.location.hash = '#r/AskReddit';
 

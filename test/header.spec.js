@@ -2,7 +2,7 @@ import assert from 'assert';
 import header from '../src/js/components/header.vue';
 
 describe('header.vue', function() {
-  describe('#created', function() {
+  describe('#created - without term', function() {
     it('submit button should be initially disabled', function() {
       const Constructor = Vue.extend(header);
       const comp = new Constructor({
@@ -17,7 +17,7 @@ describe('header.vue', function() {
     });
   });
 
-  describe('#created', function() {
+  describe('#created - with term', function() {
     it('submit button should be enabled when there is a search term', function() {
       const Constructor = Vue.extend(header);
       const comp = new Constructor({
@@ -34,7 +34,7 @@ describe('header.vue', function() {
     });
   });
 
-  describe('#watch', function() {
+  describe('#watch - term', function() {
     it('busy should false when searching is true', function() {
       const Constructor = Vue.extend(header);
       const comp = new Constructor({
