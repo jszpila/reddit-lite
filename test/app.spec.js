@@ -3,7 +3,7 @@ import app    from '../src/js/app.vue';
 
 describe('app.vue', function() {
   describe('#created', function() {
-    it('should initialize the application without a default subreddit if there is nothing in the location hash', function(done) {
+    it('should initialize the application without a default subreddit if there is nothing in the location hash', function() {
       window.location.hash = '';
 
       const vm = new Vue({
